@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hortifruti Amador — Frutas, verduras e legumes na Penha</title>
+<meta name="description" content="Hortifruti Amador: frutas, verduras e legumes selecionados todos os dias na Av. Amador Bueno da Veiga, 1140. Atendimento só na loja — venha escolher pessoalmente.">
+<meta name="theme-color" content="#2f5d3a">
+
+<!-- =========================================================
+     COMO PERSONALIZAR ESTA PÁGINA
+     1) WHATSAPP: troque o número em TODOS os links wa.me.
+        Formato: https://wa.me/55 + DDD + NÚMERO (só dígitos).
+        Hoje está: 5511912345678  -> (11) 91234-5678 (fictício)
+        Busque por "5511912345678" e substitua em todos os lugares.
+        Troque também o telefone que aparece escrito na página.
+     2) FOTOS: cada quadro da galeria esta marcado no codigo com
+        "TROCAR POR FOTO" e a sugestao do que fotografar.
+        Substitua a div .moldura__vazio por uma tag de imagem, ex.:
+        img src="fotos/fachada.jpg" alt="Fachada do Hortifruti Amador"
+     3) HOSPEDAGEM: é um arquivo único. Basta subir o index.html
+        (e a pasta de fotos, quando tiver) para qualquer servidor.
+     ========================================================= -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232f5d3a'/><path d='M50 78c-16 0-27-11-27-25 0-13 11-22 27-22s27 9 27 22c0 14-11 25-27 25z' fill='%23e3b23c'/><path d='M50 31c0-10 6-17 15-19-1 11-6 17-15 19z' fill='%2378a35c'/></svg>">
+
+<style>
+  :root{
+    --creme:      #fbf6ea;
+    --creme-2:    #f3ead6;
+    --papel:      #fffdf8;
+    --verde:      #2f5d3a;
+    --verde-claro:#5c8a52;
+    --verde-agua: #e4eede;
+    --amarelo:    #e3b23c;
+    --amarelo-sua:#f6e2ae;
+    --tomate:     #c0503c;
+    --tomate-sua: #f3dcd4;
+    --tinta:      #2a2620;
+    --tinta-fraca:#5f584c;
+    --borda:      #e0d6bf;
+    --raio:       14px;
+    --max:        1120px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{animation:none!important;transition:none!important}
+  }
+
+  body{
+    margin:0;
+    background:var(--creme);
+    color:var(--tinta);
+    font-family:"Karla", "Segoe UI", system-ui, sans-serif;
+    font-size:1.0625rem;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:"Fraunces", Georgia, "Times New Roman", serif;
+    font-weight:700;
+    line-height:1.12;
+    letter-spacing:-.015em;
+    margin:0 0 .5em;
+    color:var(--verde);
+  }
+  h1{font-size:clamp(2.3rem,7vw,4.1rem);font-weight:900}
+  h2{font-size:clamp(1.7rem,4.4vw,2.6rem)}
+  h3{font-size:1.2rem}
+  p{margin:0 0 1em}
+  a{color:var(--verde)}
+
+  .env{width:min(100% - 2.5rem, var(--max));margin-inline:auto}
+  .secao{padding:clamp(3.5rem,8vw,6rem) 0}
+
+  .olho{
+    font-size:.8rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--tomate);
+    margin:0 0 .9rem;
+  }
+
+  /* ---------- botões ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.65rem;
+    font-family:"Karla",sans-serif;font-weight:700;font-size:1.05rem;
+    padding:.95rem 1.6rem;border-radius:999px;
+    text-decoration:none;border:2px solid transparent;
+    transition:transform .15s ease, background-color .15s ease, color .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn:focus-visible{outline:3px solid var(--tomate);outline-offset:3px}
+  .btn--zap{background:var(--verde);color:#fff;box-shadow:0 10px 0 -4px rgba(47,93,58,.25)}
+  .btn--zap:hover{background:#26492e}
+  .btn--zap svg{width:22px;height:22px;flex:none;fill:currentColor}
+  .btn--linha{background:transparent;color:var(--verde);border-color:var(--verde)}
+  .btn--linha:hover{background:var(--verde);color:#fff}
+
+  /* ---------- topo ---------- */
+  .topo{
+    position:sticky;top:0;z-index:40;
+    background:rgba(251,246,234,.93);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--borda);
+  }
+  .topo__int{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0}
+  .marca{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--verde)}
+  .marca svg{width:38px;height:38px;flex:none}
+  .marca b{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:900;line-height:1;display:block}
+  .marca span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-fraca);font-weight:700}
+  .menu{display:none;gap:1.8rem;font-weight:700;font-size:.95rem}
+  .menu a{color:var(--tinta);text-decoration:none;padding-bottom:2px;border-bottom:2px solid transparent}
+  .menu a:hover{border-color:var(--amarelo)}
+  @media(min-width:860px){.menu{display:flex}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--creme)}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(38rem 26rem at 88% -10%, var(--amarelo-sua) 0%, transparent 62%),
+      radial-gradient(30rem 24rem at 4% 108%, var(--verde-agua) 0%, transparent 65%);
+    pointer-events:none;
+  }
+  .hero__int{position:relative;display:grid;gap:2.5rem;padding:clamp(3rem,7vw,5.5rem) 0 clamp(3rem,6vw,4.5rem)}
+  @media(min-width:940px){
+    .hero__int{grid-template-columns:1.05fr .95fr;align-items:center;gap:4rem}
+  }
+  .hero h1 em{font-style:normal;color:var(--tomate)}
+  .hero__lead{font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--tinta-fraca);max-width:34ch;margin-bottom:1.8rem}
+  .hero__acoes{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
+  .hero__nota{margin:1.6rem 0 0;font-size:.95rem;color:var(--tinta-fraca);display:flex;gap:.55rem;align-items:flex-start;max-width:40ch}
+  .hero__nota svg{width:19px;height:19px;flex:none;margin-top:.2rem;stroke:var(--verde-claro);fill:none;stroke-width:2}
+
+  /* cartaz ilustrado do hero (SVG, não é foto) */
+  .cartaz{
+    background:var(--papel);
+    border:1px solid var(--borda);
+    border-radius:22px;
+    padding:1.6rem 1.6rem 1.3rem;
+    transform:rotate(-1.1deg);
+  }
+  .cartaz svg{width:100%;height:auto;display:block}
+  .cartaz__rodape{
+    display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+    margin-top:1.1rem;padding-top:.9rem;border-top:1px dashed var(--borda);
+    font-size:.85rem;color:var(--tinta-fraca);letter-spacing:.06em;text-transform:uppercase;font-weight:700;
+  }
+  .cartaz__rodape b{font-family:"Fraunces",serif;font-size:1.05rem;color:var(--verde);text-transform:none;letter-spacing:0}
+
+  /* ---------- faixa "sem entrega" ---------- */
+  .faixa{background:var(--verde);color:var(--creme)}
+  .faixa__int{
+    display:grid;gap:1.5rem;padding:clamp(2.2rem,5vw,3rem) 0;
+    align-items:center;
+  }
+  @media(min-width:800px){.faixa__int{grid-template-columns:auto 1fr auto;gap:2rem}}
+  .faixa__icone{width:52px;height:52px;flex:none;stroke:var(--amarelo);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .faixa h2{color:var(--amarelo);margin:0 0 .35rem;font-size:clamp(1.35rem,3vw,1.8rem)}
+  .faixa p{margin:0;color:#eae3d2;max-width:56ch}
+  .faixa .btn--linha{border-color:var(--amarelo);color:var(--amarelo);white-space:nowrap}
+  .faixa .btn--linha:hover{background:var(--amarelo);color:var(--verde)}
+
+  /* ---------- na banca (produtos) ---------- */
+  .banca{display:grid;gap:2.5rem}
+  @media(min-width:900px){.banca{grid-template-columns:.85fr 1.15fr;gap:4rem;align-items:start}}
+  .lista-cat{list-style:none;margin:0;padding:0;display:grid;gap:0}
+  .lista-cat li{
+    display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:baseline;
+    padding:1.1rem 0;border-top:1px solid var(--borda);
+  }
+  .lista-cat li:last-child{border-bottom:1px solid var(--borda)}
+  .lista-cat dt,.lista-cat h3{margin:0}
+  .lista-cat .num{
+    font-family:"Fraunces",serif;font-weight:700;font-size:.95rem;
+    color:var(--amarelo);width:2ch;
+  }
+  .lista-cat p{margin:.15rem 0 0;color:var(--tinta-fraca);font-size:.98rem}
+
+  /* ---------- galeria ---------- */
+  .galeria-cab{display:grid;gap:1rem;margin-bottom:2.2rem}
+  @media(min-width:800px){.galeria-cab{grid-template-columns:1fr auto;align-items:end}}
+  .galeria{display:grid;gap:1.1rem;grid-template-columns:repeat(2,1fr)}
+  @media(max-width:759px){
+    .g1{grid-column:span 2}
+    .g1 .moldura__vazio{min-height:12rem}
+  }
+  @media(min-width:760px){
+    .galeria{grid-template-columns:repeat(6,1fr);grid-auto-rows:9.5rem}
+    .g1{grid-column:span 3;grid-row:span 2}
+    .g2{grid-column:span 3}
+    .g3{grid-column:span 2}
+    .g4{grid-column:span 4}
+    .g5{grid-column:span 2}
+  }
+  .moldura{margin:0;position:relative}
+  .moldura img{width:100%;height:100%;object-fit:cover;border-radius:var(--raio);display:block}
+  .moldura__vazio{
+    height:100%;min-height:9.5rem;
+    border:2px dashed #cbbf9f;
+    border-radius:var(--raio);
+    background:
+      repeating-linear-gradient(45deg,transparent 0 11px,rgba(227,178,60,.13) 11px 22px),
+      var(--creme-2);
+    display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.5rem;
+    text-align:center;padding:1.1rem;
+  }
+  .moldura__vazio svg{width:28px;height:28px;stroke:var(--verde-claro);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .moldura__rot{
+    font-weight:700;font-size:.9rem;color:var(--verde);line-height:1.3;
+  }
+  .moldura__dica{font-size:.76rem;color:var(--tinta-fraca);letter-spacing:.04em;margin:0}
+
+  /* ---------- visita (horário + endereço) ---------- */
+  .visita{background:var(--verde-agua);border-top:1px solid #d5e0cc;border-bottom:1px solid #d5e0cc}
+  .visita__grid{display:grid;gap:2rem}
+  @media(min-width:880px){.visita__grid{grid-template-columns:1fr 1fr;gap:3.5rem}}
+  .quadro{background:var(--papel);border:1px solid var(--borda);border-radius:18px;padding:clamp(1.5rem,3vw,2.1rem)}
+  .horarios{list-style:none;margin:0;padding:0}
+  .horarios li{
+    display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+    padding:.8rem 0;border-bottom:1px dashed var(--borda);
+  }
+  .horarios li:last-child{border-bottom:0;padding-bottom:0}
+  .horarios .dia{font-weight:700}
+  .horarios .hr{font-family:"Fraunces",serif;font-weight:700;font-size:1.12rem;color:var(--verde);white-space:nowrap}
+  .selo-aberto{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:var(--amarelo-sua);color:#7a5a10;
+    font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    padding:.35rem .8rem;border-radius:999px;margin-bottom:1rem;
+  }
+  .selo-aberto::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--verde-claro)}
+  .endereco{font-size:1.15rem;line-height:1.5;margin:0 0 1.2rem}
+  .endereco strong{display:block;font-family:"Fraunces",serif;font-size:1.45rem;color:var(--verde)}
+  .contato-linha{display:flex;align-items:center;gap:.7rem;margin:0 0 .6rem;color:var(--tinta-fraca);font-size:.98rem}
+  .contato-linha svg{width:18px;height:18px;flex:none;stroke:var(--verde-claro);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ---------- chamada final ---------- */
+  .final{text-align:center;background:var(--creme)}
+  .final h2{max-width:20ch;margin-inline:auto}
+  .final p{max-width:46ch;margin-inline:auto;color:var(--tinta-fraca);margin-bottom:2rem}
+  .fruta-divisor{display:flex;justify-content:center;gap:.6rem;margin-bottom:1.6rem}
+  .fruta-divisor span{width:10px;height:10px;border-radius:50%}
+  .fruta-divisor span:nth-child(1){background:var(--tomate)}
+  .fruta-divisor span:nth-child(2){background:var(--amarelo)}
+  .fruta-divisor span:nth-child(3){background:var(--verde-claro)}
+
+  /* ---------- rodapé ---------- */
+  .rodape{background:var(--verde);color:#d9d2c2;padding:2.8rem 0 5.5rem;font-size:.93rem}
+  .rodape__int{display:grid;gap:1.4rem}
+  @media(min-width:760px){.rodape__int{grid-template-columns:1fr auto;align-items:center}}
+  .rodape b{color:var(--amarelo);font-family:"Fraunces",serif;font-size:1.15rem}
+  .rodape a{color:#eae3d2}
+  .rodape p{margin:.2rem 0}
+
+  /* ---------- botão flutuante ---------- */
+  .zap-flut{
+    position:fixed;left:50%;transform:translateX(-50%);bottom:1rem;z-index:50;
+    width:min(100% - 2rem, 26rem);justify-content:center;
+    box-shadow:0 8px 24px rgba(42,38,32,.28);
+  }
+  .zap-flut:hover{transform:translateX(-50%) translateY(-2px)}
+  @media(min-width:860px){.zap-flut{display:none}}
+
+  .pular{position:absolute;left:-9999px}
+  .pular:focus{left:1rem;top:1rem;z-index:99;background:#fff;padding:.6rem 1rem;border-radius:8px}
+</style>
+</head>
+<body>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo">
+  <div class="env topo__int">
+    <a class="marca" href="#" aria-label="Hortifruti Amador — início">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <rect width="100" height="100" rx="24" fill="#2f5d3a"/>
+        <path d="M50 79c-16 0-28-11-28-25 0-13 12-23 28-23s28 10 28 23c0 14-12 25-28 25z" fill="#e3b23c"/>
+        <path d="M50 31c0-11 6-18 16-20-1 12-7 18-16 20z" fill="#78a35c"/>
+        <circle cx="39" cy="56" r="4" fill="#c0503c"/>
+        <circle cx="60" cy="62" r="5" fill="#c0503c"/>
+      </svg>
+      <span style="display:block">
+        <b>Hortifruti Amador</b>
+        <span>Av. Amador Bueno da Veiga, 1140</span>
+      </span>
+    </a>
+    <nav class="menu" aria-label="Seções da página">
+      <a href="#banca">Na banca</a>
+      <a href="#fotos">Fotos</a>
+      <a href="#visita">Horários</a>
+      <a href="#visita">Onde estamos</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="env hero__int">
+      <div>
+        <p class="olho">Hortifruti de bairro · Penha, São Paulo</p>
+        <h1>Fruta escolhida <em>na mão</em>, todo dia de manhã.</h1>
+        <p class="hero__lead">
+          A gente separa, cheira e escolhe o que entra na banca — pra você
+          levar pra casa verdura viçosa, fruta no ponto e legume firme.
+        </p>
+
+        <div class="hero__acoes">
+          <a class="btn btn--zap"
+             href="https://wa.me/5511912345678?text=Ol%C3%A1%21%20Vi%20o%20site%20do%20Hortifruti%20Amador%20e%20queria%20saber%20o%20que%20chegou%20fresquinho%20hoje."
+             target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.71-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.24-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.65 4.2 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+            Falar no WhatsApp
+          </a>
+          <a class="btn btn--linha" href="#visita">Ver horários e endereço</a>
+        </div>
+
+        <p class="hero__nota">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.6-7-10a7 7 0 1 1 14 0c0 5.4-7 10-7 10Z"/><circle cx="12" cy="11" r="2.6"/></svg>
+          <span>Atendimento só na loja física — não fazemos entrega. Use o WhatsApp pra tirar dúvidas antes de vir.</span>
+        </p>
+      </div>
+
+      <div class="cartaz" aria-hidden="true">
+        <!-- ilustração decorativa em SVG (não é foto; as fotos reais vão na galeria) -->
+        <svg viewBox="0 0 400 300" role="presentation">
+          <rect width="400" height="300" rx="10" fill="#fffdf8"/>
+          <!-- caixote -->
+          <path d="M40 190h320v78H40z" fill="#e8dcc0"/>
+          <path d="M40 190h320v14H40zM40 224h320v12H40zM40 254h320v14H40z" fill="#d9c9a4"/>
+          <path d="M40 190h16v78H40zM344 190h16v78h-16z" fill="#cdb98d"/>
+          <!-- laranjas -->
+          <circle cx="112" cy="163" r="30" fill="#e3b23c"/>
+          <circle cx="104" cy="154" r="8" fill="#eec764" opacity=".75"/>
+          <circle cx="170" cy="171" r="22" fill="#d99b34"/>
+          <!-- tomates -->
+          <circle cx="238" cy="166" r="27" fill="#c0503c"/>
+          <path d="M238 141c-7-1-11-5-12-11 7 0 12 4 12 11z" fill="#5c8a52"/>
+          <circle cx="288" cy="176" r="18" fill="#a9432f"/>
+          <!-- folhas / verdura -->
+          <path d="M318 178c-4-24 10-42 34-46-2 26-14 42-34 46z" fill="#5c8a52"/>
+          <path d="M330 178c2-16 10-27 22-33" stroke="#38602f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M62 180c-3-19 8-34 27-37-1 21-11 34-27 37z" fill="#78a35c"/>
+          <!-- maçã -->
+          <circle cx="196" cy="140" r="17" fill="#b8462f"/>
+          <path d="M196 123c0-6 3-10 9-11-1 7-4 10-9 11z" fill="#5c8a52"/>
+          <!-- placa de preço -->
+          <path d="M252 96h104v44H252z" fill="#fbf6ea" stroke="#e0d6bf" stroke-width="2"/>
+          <path d="M252 96l52-22 52 22" fill="#f3ead6" stroke="#e0d6bf" stroke-width="2"/>
+          <text x="304" y="126" font-family="Fraunces, Georgia, serif" font-size="24" font-weight="700" fill="#2f5d3a" text-anchor="middle">do dia</text>
+        </svg>
+        <p class="cartaz__rodape">
+          <span>Chegada diária</span>
+          <b>7h30</b>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAIXA: SEM ENTREGA ============ -->
+  <section class="faixa" aria-labelledby="t-sementrega">
+    <div class="env faixa__int">
+      <svg class="faixa__icone" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M6 32V17h20v15M26 22h8l6 6v4M6 32h3M17 32h6M34 32h3"/>
+        <circle cx="13" cy="35" r="4"/><circle cx="31" cy="35" r="4"/>
+        <path d="M9 10L39 40" stroke-width="2.6"/>
+      </svg>
+      <div>
+        <h2 id="t-sementrega">Aqui não tem entrega — e tem um motivo bom</h2>
+        <p>
+          Fruta boa a gente gosta de ver, apertar de leve e cheirar antes de levar.
+          Por isso o atendimento é só na loja: você escolhe uma a uma, com a gente
+          do lado pra dizer o que está no ponto hoje. Passa aqui que a gente separa.
+        </p>
+      </div>
+      <a class="btn btn--linha" href="#visita">Como chegar</a>
+    </div>
+  </section>
+
+  <!-- ============ NA BANCA ============ -->
+  <section class="secao" id="banca" aria-labelledby="t-banca">
+    <div class="env banca">
+      <div>
+        <p class="olho">O que você encontra</p>
+        <h2 id="t-banca">A banca muda conforme a estação</h2>
+        <p style="color:var(--tinta-fraca)">
+          Compramos em quantidade pequena e com frequência, então o que está na
+          prateleira chegou há pouco. Se procura alguma coisa específica, chama no
+          WhatsApp antes de sair de casa que a gente confere pra você.
+        </p>
+        <a class="btn btn--zap" style="margin-top:.6rem"
+           href="https://wa.me/5511912345678?text=Ol%C3%A1%21%20Queria%20saber%20se%20voc%C3%AAs%20t%C3%AAm%20um%20produto%20hoje%3A%20"
+           target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.71-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.24-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.65 4.2 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+          Perguntar sobre um produto
+        </a>
+      </div>
+
+      <ul class="lista-cat">
+        <li>
+          <span class="num">01</span>
+          <div>
+            <h3>Frutas da estação</h3>
+            <p>Banana, mamão, melancia, manga, morango quando é época — e sempre uma dica de qual está no ponto pra hoje.</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">02</span>
+          <div>
+            <h3>Verduras e folhas</h3>
+            <p>Alface, rúcula, couve, agrião e temperos verdes recebidos de manhã, ainda com a folha firme.</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">03</span>
+          <div>
+            <h3>Legumes e raízes</h3>
+            <p>Tomate, cebola, batata, cenoura, abóbora, mandioca — o básico da cozinha, sempre em casa.</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">04</span>
+          <div>
+            <h3>Ovos, temperos e secos</h3>
+            <p>Ovos caipira, alho, azeitona, castanhas e aquele complemento que faltava na lista da feira.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ GALERIA (PLACEHOLDERS) ============ -->
+  <section class="secao" id="fotos" style="background:var(--papel);border-block:1px solid var(--borda)" aria-labelledby="t-fotos">
+    <div class="env">
+      <div class="galeria-cab">
+        <div>
+          <p class="olho">A loja por dentro</p>
+          <h2 id="t-fotos" style="margin-bottom:.3rem">Um pouquinho do nosso dia</h2>
+          <p style="color:var(--tinta-fraca);margin:0;max-width:52ch">
+            Os quadros abaixo estão reservados para as fotos reais da loja.
+            Cada um já indica o que fotografar e o formato ideal.
+          </p>
+        </div>
+      </div>
+
+      <div class="galeria">
+        <!-- TROCAR POR FOTO: fachada -->
+        <figure class="moldura g1">
+          <div class="moldura__vazio">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-5 9 5v11H3V9Z"/><path d="M3 12h18M9 20v-6h6v6"/></svg>
+            <p class="moldura__rot">Foto 1 — Fachada da loja</p>
+            <p class="moldura__dica">Horizontal · sugerido 1200×900px</p>
+          </div>
+          <!-- <img src="fotos/fachada.jpg" alt="Fachada do Hortifruti Amador na Av. Amador Bueno da Veiga"> -->
+        </figure>
+
+        <!-- TROCAR POR FOTO: banca de frutas -->
+        <figure class="moldura g2">
+          <div class="moldura__vazio">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="14" r="5"/><circle cx="16" cy="12" r="4"/><path d="M9 9V6M16 8V6"/></svg>
+            <p class="moldura__rot">Foto 2 — Banca de frutas</p>
+            <p class="moldura__dica">Horizontal · 1200×600px</p>
+          </div>
+        </figure>
+
+        <!-- TROCAR POR FOTO: verduras e folhas -->
+        <figure class="moldura g3">
+          <div class="moldura__vazio">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c-1-9 5-15 14-15 0 10-5 15-14 15Z"/><path d="M7 17c2-5 5-8 9-10"/></svg>
+            <p class="moldura__rot">Foto 3 — Verduras e folhas</p>
+            <p class="moldura__dica">Quadrada · 800×800px</p>
+          </div>
+        </figure>
+
+        <!-- TROCAR POR FOTO: atendimento / equipe -->
+        <figure class="moldura g4">
+          <div class="moldura__vazio">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M15.5 19c.4-2.3 1.9-3.7 4-3.7"/></svg>
+            <p class="moldura__rot">Foto 4 — Atendimento / equipe</p>
+            <p class="moldura__dica">Horizontal · 1200×600px</p>
+          </div>
+        </figure>
+
+        <!-- TROCAR POR FOTO: caixotes / interior -->
+        <figure class="moldura g5">
+          <div class="moldura__vazio">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18v12H3z"/><path d="M3 12h18M9 8v12M15 8v12"/><path d="M6 8l2-4h8l2 4"/></svg>
+            <p class="moldura__rot">Foto 5 — Caixotes / interior</p>
+            <p class="moldura__dica">Quadrada · 800×800px</p>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISITA: HORÁRIO + ENDEREÇO ============ -->
+  <section class="secao visita" id="visita" aria-labelledby="t-visita">
+    <div class="env">
+      <p class="olho">Venha nos visitar</p>
+      <h2 id="t-visita" style="margin-bottom:2rem">Onde estamos e quando abrimos</h2>
+
+      <div class="visita__grid">
+
+        <div class="quadro">
+          <span class="selo-aberto">Abrimos todos os dias às 7h30</span>
+          <h3 style="margin-bottom:.8rem">Horário de funcionamento</h3>
+          <ul class="horarios">
+            <li>
+              <span class="dia">Segunda a sábado</span>
+              <span class="hr">7h30 – 19h</span>
+            </li>
+            <li>
+              <span class="dia">Domingos e feriados</span>
+              <span class="hr">7h30 – 13h</span>
+            </li>
+          </ul>
+          <p style="margin:1.2rem 0 0;font-size:.93rem;color:var(--tinta-fraca)">
+            Quem chega cedo pega a banca recém-montada. No fim da tarde
+            costuma dar pra achar boas pechinchas do dia.
+          </p>
+        </div>
+
+        <div class="quadro">
+          <h3 style="margin-bottom:.8rem">Endereço</h3>
+          <p class="endereco">
+            <strong>Av. Amador Bueno da Veiga, 1140</strong>
+            São Paulo — SP
+          </p>
+
+          <p class="contato-linha">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.6-7-10a7 7 0 1 1 14 0c0 5.4-7 10-7 10Z"/><circle cx="12" cy="11" r="2.6"/></svg>
+            Atendimento presencial — sem entrega e sem retirada por aplicativo.
+          </p>
+          <p class="contato-linha">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1.1 1A16 16 0 0 1 4 5.1 1 1 0 0 1 5 4Z"/></svg>
+            WhatsApp da loja: (11) 91234-5678
+          </p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.4rem">
+            <a class="btn btn--zap"
+               href="https://wa.me/5511912345678?text=Ol%C3%A1%21%20Queria%20confirmar%20o%20hor%C3%A1rio%20de%20funcionamento%20do%20Hortifruti%20Amador%20hoje."
+               target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.71-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.24-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.65 4.2 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+              Chamar no WhatsApp
+            </a>
+            <a class="btn btn--linha"
+               href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Amador+Bueno+da+Veiga%2C+1140%2C+S%C3%A3o+Paulo"
+               target="_blank" rel="noopener">Abrir no mapa</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAMADA FINAL ============ -->
+  <section class="secao final" aria-labelledby="t-final">
+    <div class="env">
+      <div class="fruta-divisor" aria-hidden="true"><span></span><span></span><span></span></div>
+      <h2 id="t-final">Passa aqui amanhã cedo?</h2>
+      <p>
+        A banca fica pronta às 7h30. Se quiser saber o que chegou antes de
+        vir, é só mandar uma mensagem — a gente responde no balcão mesmo.
+      </p>
+      <a class="btn btn--zap"
+         href="https://wa.me/5511912345678?text=Ol%C3%A1%21%20O%20que%20chegou%20de%20fresquinho%20hoje%20no%20Hortifruti%20Amador%3F"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.71-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.24-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.65 4.2 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+        Falar com a loja
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="env rodape__int">
+    <div>
+      <p><b>Hortifruti Amador</b></p>
+      <p>Av. Amador Bueno da Veiga, 1140 — São Paulo/SP</p>
+      <p>Seg. a sáb. 7h30–19h · Dom. e feriados 7h30–13h</p>
+      <p>Atendimento apenas na loja física — não fazemos entrega.</p>
+    </div>
+    <div>
+      <p>WhatsApp: <a href="https://wa.me/5511912345678" target="_blank" rel="noopener">(11) 91234-5678</a></p>
+    </div>
+  </div>
+</footer>
+
+<a class="btn btn--zap zap-flut"
+   href="https://wa.me/5511912345678?text=Ol%C3%A1%21%20Vi%20o%20site%20do%20Hortifruti%20Amador%20e%20queria%20tirar%20uma%20d%C3%BAvida."
+   target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.71-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.24-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.65 4.2 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+  Falar no WhatsApp
+</a>
+
+</body>
+</html>
